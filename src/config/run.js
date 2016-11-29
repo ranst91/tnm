@@ -1,4 +1,4 @@
-module.exports = function($rootScope, $http, $location, $localStorage) {
+module.exports = function($rootScope, $http, $location, $state, $localStorage) {
     if ($localStorage.currentUser) {
         $rootScope.isAuthenticated = true;
         $http.defaults.headers.common.Authorization = 'Bearer ' + $localStorage.currentUser.token;
@@ -10,7 +10,7 @@ module.exports = function($rootScope, $http, $location, $localStorage) {
         let restrictedPage = publicPages.indexOf($location.path()) === -1;
         if (restrictedPage && !$localStorage.currentUser) {
             $rootScope.isAuthenticated = false;
-            $location.path('/auth/login');
+            $state.go('login');
         }
     });
 };

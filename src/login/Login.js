@@ -34,7 +34,7 @@ module.exports = function (AuthService, MessageService, $state) {
             }
         }).catch(error => {
             //USE $LOG!!!
-            MessageService.error(error);
+            MessageService.error('It seems like there was an error logging you in');
         });
     };
 };
