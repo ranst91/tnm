@@ -13,7 +13,7 @@ module.exports = function($stateProvider, $urlRouterProvider) {
             controller: 'Home as vm',
         })
         .state('login', {
-            url: '/auth/login',
+            url: 'auth/login',
             templateUrl: 'views/login.html',
             controller: 'Login as vm'
         });

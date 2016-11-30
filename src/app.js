@@ -1,9 +1,11 @@
 //General required scripts
 let angular = require('angular');
-require('toastr');
+require('jquery');
 require('angular-ui-router');
 require('ngstorage');
 require('ngmap');
+require('angular-animate');
+require('angular-toastr');
 //Configuration files
 let router = require('./config/router');
 let unauthorizedInterceptor = require('./config/interceptors');
@@ -20,7 +22,7 @@ let Login = require('./login/Login');
 let map = require('./map/Map.component');
 
 //Initialize the app
-angular.module('app', ["ui.router", "ngStorage", "ngMap"])
+angular.module('app', ["ui.router", "ngStorage", "ngMap", "toastr", "ngAnimate"])
     //Services
     .service('AuthService', AuthService)
     .service('MessageService', MessageService)

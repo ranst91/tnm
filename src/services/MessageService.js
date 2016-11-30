@@ -1,4 +1,4 @@
-module.exports = function () {
+module.exports = function (toastr) {
     /**
      * Exposed functions available from this service
      * @type {{error: error, success: success}}

@@ -9,7 +9,6 @@ module.exports = function (AuthService, MessageService, $state) {
     function initController() {
         AuthService.logout();
     }
-
     /**
      * Submit a login request using email and password.
      * If a response comes as truth:
@@ -23,9 +22,10 @@ module.exports = function (AuthService, MessageService, $state) {
         AuthService.login(vm.email, vm.password).then(response => {
             if (response === true) {
                 //get user info from Auth.getUserInfo
-                AuthService.getUserInfo().then(userInfo => {
+                AuthService.getUserInfo().then(response => {
+                    let userInfo = response.data;
                     //toastr welcome
-                    MessageService.success('Welcome *USERNAME*');
+                    MessageService.success(`Welcome ${userInfo.firstName}`);
                     //redirect home
                     $state.go('home');
                 });

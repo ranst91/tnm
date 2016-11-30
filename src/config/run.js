@@ -9,7 +9,7 @@ module.exports = function($rootScope, $http, $location, $state, $localStorage) {
         let publicPages = ['/auth/login'];
         let restrictedPage = publicPages.indexOf($location.path()) === -1;
         if (restrictedPage && !$localStorage.currentUser) {
-            $rootScope.isAuthenticated = true;
+            $rootScope.isAuthenticated = false;
             $state.go('login');
         }
     });
