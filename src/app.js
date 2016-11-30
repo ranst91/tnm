@@ -3,6 +3,7 @@ let angular = require('angular');
 require('toastr');
 require('angular-ui-router');
 require('ngstorage');
+require('ngmap');
 //Configuration files
 let router = require('./config/router');
 let unauthorizedInterceptor = require('./config/interceptors');
@@ -19,7 +20,7 @@ let Login = require('./login/Login');
 let map = require('./map/Map.component');
 
 //Initialize the app
-angular.module('app', ["ui.router", "ngStorage"])
+angular.module('app', ["ui.router", "ngStorage", "ngMap"])
     //Services
     .service('AuthService', AuthService)
     .service('MessageService', MessageService)
@@ -28,7 +29,7 @@ angular.module('app', ["ui.router", "ngStorage"])
     //Controllers
     .controller('Home', Home)
     .controller('Login', ['AuthService', 'MessageService', '$state', Login])
-    .component('map', map)
+    .component('m', map)
 
     //Configs
     .config(['$stateProvider', '$urlRouterProvider', router])
