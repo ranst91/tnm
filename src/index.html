@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/bundle.css">
 </head>
 <body ng-app="app">
-<nav class="navbar material-nav navbar-static-top">
+<nav class="navbar navigation navbar-static-top">
     <div class="container">
         <div class="navbar-header">
             <!-- Branding -->
@@ -14,17 +14,17 @@
                 TNM
             </a>
         </div>
-        <div class="collapse navbar-collapse" id="app-navbar-collapse" data-target="app-navbar-collapse">
+        <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                <li ui-sref-active="active-tasks active" class="material-nav-btn" data-target="app-navbar-collapse">
+                <li>
                     <a ui-sref="home">Show charge points map</a>
                 </li>
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
-                <li ui-sref-active="active-profile active" class="material-nav-btn profile1" data-target="app-navbar-collapse" ng-if="!isAuthenticated"><a href="#/auth/login">Login</a></li>
-                <li ui-sref-active="active-profile active" class="material-nav-btn profile2" data-target="app-navbar-collapse" ng-if="isAuthenticated"><a href="#/auth/logout">Logout</a></li>
+                <li ng-if="!isAuthenticated"><a href="#/auth/login">Login</a></li>
+                <li ng-if="isAuthenticated"><a href="#/auth/logout">Logout</a></li>
             </ul>
         </div>
     </div>

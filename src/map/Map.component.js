@@ -7,7 +7,6 @@ module.exports = {
         let vm = this;
         vm.googleMapsUrl = 'http://maps.google.com/maps/api/js&key=AIzaSyApB3XNRfJq6zXacIKpyauTE-iiolRFYQc';
         initMap();
-        console.log('dasf');
         function initMap() {
             let mapOptions = {
                 zoom: 3,
