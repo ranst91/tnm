@@ -7,6 +7,7 @@ var browserify = require('browserify'); // BundlesJS
 var source = require('vinyl-source-stream'); //Use conventional text streams with Gulp
 var concat = require('gulp-concat'); // Add files together
 var rename = require('gulp-rename');
+var sass = require('gulp-sass');
 
 //A Config to point directories, port, the url of the web server w'ere about to use
 var config = {
@@ -18,9 +19,12 @@ var config = {
         js: './src/**/*.js',
         css: [
             'node_modules/bootstrap/dist/css/bootstrap.min.css',
-            'node_modules/bootstrap/dist/css/bootstrap-theme.min.css'
+            'node_modules/bootstrap/dist/css/bootstrap-theme.min.css',
+            'node_modules/angular-toastr/dist/angular-toastr.min.css',
+            'src/css/style.css'
             //Add more CSS files here, as you create them for your app!
         ],
+        sass: 'src/css/*.scss',
         dist: './dist',
         mainJS: './src/app.js'
     }
@@ -56,6 +60,12 @@ gulp.task('views', function () {
         .pipe(connect.reload())
 });
 
+gulp.task('sass', function () {
+   gulp.src(config.paths.sass)
+       .pipe(sass())
+       .pipe(gulp.dest(config.paths.sass))
+});
+
 //Concat any css into 1 file called bundle.css
 gulp.task('css', function () {
    gulp.src(config.paths.css)
@@ -88,4 +98,4 @@ gulp.task('watch', function () {
  * 4. Set up a local dev server, Open a web browser the get the stuff running
  * 5. Watch for any real time changes
  */
-gulp.task('default', ['html', 'views', 'css', 'js', 'open', 'watch']);
+gulp.task('default', ['html', 'views', 'sass', 'css', 'js', 'open', 'watch']);
