@@ -27,14 +27,8 @@ module.exports = function ($http, $httpParamSerializer, $localStorage) {
      * @param password
      * @returns {*|Promise.<TResult>}
      */
-  //   curl -X POST "https://api.test.thenewmotion.com/oauth2/access_token" -i \
-  // -H "Content-Type: application/x-www-form-urlencoded" \
-  // -H "Authorization: Basic dGVzdF9jbGllbnRfaWQ6dGVzdF9jbGllbnRfc2VjcmV0=" \
-  // --data "grant_type=password&username={user}&password={password}"
-  //   { email: email, password: password }
-  //   Authorization: Basic dGVzdF9jbGllbnRfaWQ6dGVzdF9jbGllbnRfc2VjcmV0=
-  //   Authorization: Basic dGVzdF9jbGllbnRfaWQ6dGVzdF9jbGllbnRfc2VjcmV0=
-  //   Zea2E5RA
+    // Email: programming-assignment@thenewmotion.com
+    // Password:Zea2E5RA
 
         function login(email, password) {
         return $http({
