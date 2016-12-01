@@ -7,31 +7,31 @@ require('ngmap');
 require('angular-animate');
 require('angular-toastr');
 //Configuration files
-let router = require('./config/router');
-let unauthorizedInterceptor = require('./config/interceptors');
-let run = require('./config/run');
+let router = require('./config/app.route.js');
+let unauthorizedInterceptor = require('./config/app.interceptors');
+let run = require('./config/app.run');
 
 //Services
-let AuthService = require('./services/Auth');
-let MessageService = require('./services/MessageService');
-let MapService = require('./services/MapService');
+let authService = require('./services/auth.service');
+let messageService = require('./services/messages.service');
+let mapService = require('./services/map.service');
 
 //Controllers and components
-let Home = require('./home/Home');
-let Login = require('./login/Login');
-let map = require('./map/Map.component');
+let home = require('./home/home.controller');
+let login = require('./login/login.controller');
+let mapComponent = require('./map/map.component');
 
 //Initialize the app
 angular.module('app', ["ui.router", "ngStorage", "ngMap", "toastr", "ngAnimate"])
     //Services
-    .service('AuthService', AuthService)
-    .service('MessageService', MessageService)
-    .service('MapService', MapService)
+    .service('authService', authService)
+    .service('messageService', messageService)
+    .service('mapService', mapService)
 
     //Controllers
-    .controller('Home', ['MapService', Home])
-    .controller('Login', ['AuthService', 'MessageService', '$state', Login])
-    .component('m', map)
+    .controller('HomeController', ['mapService', home])
+    .controller('LoginController', ['authService', 'messageService', '$state', login])
+    .component('gMap', mapComponent)
 
     //Configs
     .config(['$stateProvider', '$urlRouterProvider', router])
