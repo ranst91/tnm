@@ -1,7 +1,9 @@
-module.exports = function () {
+module.exports = function (MapService) {
     let vm = this;
-    vm.markers = [
-        {lat: -25.363, lng: 131.044},
-        {lat: -42.363, lng: 100.044}
-    ];
+    vm.markers = [];
+    vm.center = {};
+    MapService.getMarkersFromApi().then(res => {
+        vm.markers = res;
+        vm.center = vm.markers[0];
+    });
 };

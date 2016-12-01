@@ -57,6 +57,7 @@ module.exports = function ($http, $httpParamSerializer, $localStorage) {
                     refresh_token: response.refresh_token
                 };
                 $http.defaults.headers.common.Authorization = 'Bearer ' + response.access_token;
+                $rootScope.isAuthenticated = true;
                 return true;
             } else
                 return false;

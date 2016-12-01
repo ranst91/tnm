@@ -1,6 +1,6 @@
 //General required scripts
 let angular = require('angular');
-require('jquery');
+// require('jquery');
 require('angular-ui-router');
 require('ngstorage');
 require('ngmap');
@@ -29,7 +29,7 @@ angular.module('app', ["ui.router", "ngStorage", "ngMap", "toastr", "ngAnimate"]
     .service('MapService', MapService)
 
     //Controllers
-    .controller('Home', Home)
+    .controller('Home', ['MapService', Home])
     .controller('Login', ['AuthService', 'MessageService', '$state', Login])
     .component('m', map)
 

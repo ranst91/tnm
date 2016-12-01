@@ -1,34 +1,24 @@
 module.exports = {
     templateUrl: 'views/map.component.html',
     bindings: {
-        markers: '<'
+        markers: '<',
+        center: '<'
     },
     controller: function (MapService) {
         let vm = this;
         vm.googleMapsUrl = 'http://maps.google.com/maps/api/js&key=AIzaSyApB3XNRfJq6zXacIKpyauTE-iiolRFYQc';
-        initMap();
-        function initMap() {
-            let mapOptions = {
-                zoom: 3,
-                center: _getLatLng(vm.markers[0]),
-                mapTypeId: 'roadmap'
-            };
-            vm.map = new google.maps.Map(document.getElementById('map_self'), mapOptions);
-            for (let marker of vm.markers) {
-                _addMarker(marker);
-            }
-        }
+        let mapOptions = {
+            zoom: 8,
+            center: {
+                lat: vm.center.lat,
+                lng: vm.center.lng
+            },
+            mapTypeId: 'roadmap'
+        };
 
-        function _addMarker(marker) {
-            return new google.maps.Marker({
-                position: _getLatLng(marker),
-                map: vm.map,
-                title: 'Hello World!'
-            });
-        }
-
-        function _getLatLng(marker){
-            return new google.maps.LatLng(marker.lat, marker.lng);
+        MapService.initMap(mapOptions);
+        for (let marker of vm.markers){
+            MapService.addMarker(marker.lat, marker.lng, marker.title);
         }
     }
 };
